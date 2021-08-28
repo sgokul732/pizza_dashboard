@@ -7,20 +7,14 @@ import store from "./store";
 import DashBoard from "./containers/DashBoard";
 
 const Routes = () => {
-    return ( <
-        Provider store = { store } >
-        <
-        Router basename = { process.env.PUBLIC_URL } >
-        <
-        Route exact path = "/"
-        component = { DashBoard }
-        /> <
-        Route exact path = "/dashboard"
-        component = { DashBoard }
-        />{" "} < /
-        Router > { " " } <
-        /Provider>
-    );
+  return (
+    <Provider store={store}>
+      <Router basename={process.env.PUBLIC_URL}>
+        <Route exact path="/" component={DashBoard} />
+        <Route exact path="/dashboard" component={DashBoard} />
+      </Router>{" "}
+    </Provider>
+  );
 };
 
 export default Routes;

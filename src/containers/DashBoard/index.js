@@ -2,7 +2,7 @@ import React from "react";
 
 import PizzaList from "../../components/PizzaList";
 
-const DashBoard = (props) => {
+const DashBoard = () => {
   return (
     <div>
       <PizzaList />

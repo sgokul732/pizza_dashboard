@@ -10,51 +10,32 @@ import noData from "../../assets/images/no-data.png";
 import SortAndFilterPizzas from "../SortAndFilterPizzas";
 
 const PizzaList = (props) => {
-  const {
-    pizzaList,
-    getPizzaList,
-    loading,
-    error,
-    getFromCart,
-    setCartSize,
-  } = props;
-
-  const [modifiedList, setModifiedList] = useState([]);
+  const { pizzaList, getPizzaList, loading, error } = props;
 
   useEffect(() => {
     getPizzaList();
   }, []);
-
-  useEffect(() => {
-    pizzaList && PizzaList.length && setModifiedList([...pizzaList]);
-  }, [pizzaList]);
-
 
   if (loading) {
     return <img className="invalid" src={loadingImg} alt="Loading" />;
   }
   if (error)
     return <img className="invalid" src={noData} alt="No Data Available" />;
-  if (modifiedList && modifiedList.length)
+  if (pizzaList && pizzaList.length)
     return (
       <>
-        <SortAndFilterPizzas/
-       
-        >
-        {modifiedList.map((entry, i) => {
+        <SortAndFilterPizzas />
+        {pizzaList.map((entry) => {
           return (
-            <div key={i}>
+            <div key={entry.restaurantId}>
               <PizzaCard
                 id={entry.restaurantId}
                 name={entry.restaurantName}
-               
                 img_url={entry.restaurantImage}
                 time={entry.displayTime}
                 price={entry.displayCostForTwo}
                 averageReview={entry.averageReview}
-                outlet={entry.outlet}               
-                getFromCart={getFromCart}
-                setCartSize={setCartSize}
+                outlet={entry.outlet}
               />
             </div>
           );
