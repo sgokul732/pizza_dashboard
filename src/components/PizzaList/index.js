@@ -24,7 +24,7 @@ const PizzaList = (props) => {
   if (pizzaList && pizzaList.length)
     return (
       <>
-        <SortAndFilterPizzas />
+        <SortAndFilterPizzas size={pizzaList.length} />
         {pizzaList.map((entry) => {
           return (
             <div key={entry.restaurantId}>
